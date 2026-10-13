@@ -37,6 +37,17 @@
   height: 100vh;
 }
 
+/* Widen the conversation stream.
+   `--container-session` is declared in the design system's @theme block, which
+   Tailwind emits into `@layer theme`; an unlayered `:root` rule here wins over it
+   without editing the shared token file. It is consumed by `md:max-w-session` in
+   the message timeline, the composer dock, the drop target and the session route,
+   so all of them widen together and keep their edges aligned.
+   Upstream default is 744px. */
+:root {
+  --container-session: 1440px;
+}
+
 @layer components {
   [data-slot="session-chat-panel"][data-scrollbar-hidden="true"]
     [data-slot="session-timeline-scroll"]
